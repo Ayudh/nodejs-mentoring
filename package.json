@@ -9,7 +9,24 @@
     "serve": "nodemon dist/app.js",
     "dev-serve": "nodemon --exec babel-node src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint --fix src/"
+    "lint": "yarn run lint:eslint && yarn run lint:prettier",
+    "lint:prettier": "prettier src/** --write",
+    "lint:eslint": "eslint --fix src/"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.{json,md,html,css}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "repository": {
     "type": "git",
@@ -32,6 +49,11 @@
     "@babel/preset-env": "^7.4.5",
     "@babel/register": "^7.4.4",
     "eslint": "^6.0.1",
-    "nodemon": "^1.19.1"
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "husky": "^2.7.0",
+    "lint-staged": "^8.2.1",
+    "nodemon": "^1.19.1",
+    "prettier": "^1.18.2"
   }
 }
