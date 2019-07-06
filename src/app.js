@@ -12,12 +12,4 @@ new Product();
 const DATA_DIR_PATH = path.join(__dirname, 'data');
 const dirwatcher = new Dirwatcher().watch(DATA_DIR_PATH, 1000);
 
-dirwatcher.emitter.on(Dirwatcher.DIR_CHANGE_EVENT, async files => {
-  for (let fileName of files) {
-    console.log(fileName + ': changed');
-    await Importer.import(fileName).then(data => console.log(data));
-  }
-});
-
-// To stop watching the directory changes
-// dirwatcher.close();
+new Importer(dirwatcher);
