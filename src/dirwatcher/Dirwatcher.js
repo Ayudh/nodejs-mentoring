@@ -3,8 +3,8 @@ import { readdirSync, statSync } from 'fs';
 import * as path from 'path';
 
 export class Dirwatcher {
-  static get DIR_CHANGE_EVENT() {
-    return '​dirwatcher:changed';
+  constructor() {
+    this.watchEvent = '​dirwatcher:changed';
   }
 
   watch(dirPath, delay) {
@@ -41,18 +41,14 @@ export class Dirwatcher {
     return processedFilesData;
   }
 
-  filterProcessedFiles(processedFilesData, currentFilesData) {
-    return currentFilesData.filter(fileData => {
-      const index = processedFilesData.findIndex(
+  filterProcessedFiles(processedFiles, currentFiles) {
+    return currentFiles.filter(fileData => {
+      const index = processedFiles.findIndex(
         file => file.fileName === fileData.fileName
       );
-      if (index === -1) {
-        return true;
-      }
-      if (fileData.updateTime > processedFilesData[index].updateTime) {
-        return true;
-      }
-      return false;
+      return (
+        index === -1 || fileData.updateTime > processedFiles[index].updateTime
+      );
     });
   }
 
