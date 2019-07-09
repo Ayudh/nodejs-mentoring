@@ -1,3 +1,5 @@
+import './polyfill';
+
 import * as path from 'path';
 import * as config from './config/config.json';
 import { Dirwatcher } from './dirwatcher';
