@@ -8,6 +8,7 @@
     "build": "babel ./src --out-dir dist --copy-files",
     "serve": "nodemon dist/app.js",
     "dev-serve": "nodemon --exec babel-node src/app.js",
+    "stream": "babel-node src/utils/streams.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "yarn run lint:eslint && yarn run lint:prettier",
     "lint:prettier": "prettier src/**/*.{js,json,html,css} --write",
@@ -56,5 +57,9 @@
     "nodemon": "^1.19.1",
     "prettier": "^1.18.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "commander": "^2.20.0",
+    "concat": "^1.0.3",
+    "through2": "^3.0.1"
+  }
 }
