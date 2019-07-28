@@ -9,6 +9,7 @@
     "serve": "nodemon dist/app.js",
     "dev-serve": "nodemon --exec babel-node src/app.js",
     "stream": "babel-node src/utils/streams.js",
+    "babel-node": "babel-node",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "yarn run lint:eslint && yarn run lint:prettier",
     "lint:prettier": "prettier src/**/*.{js,json,html,css} --write",
