@@ -10,6 +10,7 @@
     "dev-serve": "nodemon --exec babel-node src/app.js",
     "stream": "babel-node src/utils/streams.js",
     "babel-node": "babel-node",
+    "express:start": "babel-node src/express/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "yarn run lint:eslint && yarn run lint:prettier",
     "lint:prettier": "prettier src/**/*.{js,json,html,css} --write",
@@ -61,6 +62,7 @@
   "dependencies": {
     "commander": "^2.20.0",
     "concat": "^1.0.3",
+    "express": "^4.17.1",
     "through2": "^3.0.1"
   }
 }

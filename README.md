@@ -25,3 +25,5 @@ Task 4 commands
 `yarn run babel-node src/http-servers/json-server.js`
 
 `yarn run babel-node src/http-servers/echo-server.js`
+
+`yarn run express:start`
