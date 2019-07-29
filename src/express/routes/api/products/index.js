@@ -1,9 +1,10 @@
 import express from 'express';
+import * as state from './state.json';
 
 const router = express.Router();
 
 router.use((req, res, next) => {
-  req.products = global.state.products;
+  req.products = state.products;
   next();
 });
 
@@ -12,13 +13,13 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  global.state.products[req.body.id] = req.body;
+  state.products[req.body.id] = req.body;
   res.json(req.body);
 });
 
 router.param('id', (req, res, next, id) => {
-  id = +id;
-  const product = req.products[id];
+  const productID = +id;
+  const product = req.products[productID];
   if (!product) {
     res.json({ message: 'Product not Found' });
   } else {
