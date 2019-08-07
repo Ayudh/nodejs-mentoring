@@ -1,5 +1,5 @@
 import express from 'express';
-import * as state from './state.json';
+import * as state from '../../../state.json';
 
 const router = express.Router();
 

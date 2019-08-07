@@ -63,6 +63,7 @@
     "commander": "^2.20.0",
     "concat": "^1.0.3",
     "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
     "through2": "^3.0.1"
   }
 }
