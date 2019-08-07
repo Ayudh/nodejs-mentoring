@@ -10,7 +10,7 @@
     "dev-serve": "nodemon --exec babel-node src/app.js",
     "stream": "babel-node src/utils/streams.js",
     "babel-node": "babel-node",
-    "express:start": "babel-node src/express/index.js",
+    "express:start": "nodemon --exec babel-node src/express/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "yarn run lint:eslint && yarn run lint:prettier",
     "lint:prettier": "prettier src/**/*.{js,json,html,css} --write",
@@ -64,6 +64,11 @@
     "concat": "^1.0.3",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
+    "passport": "^0.4.0",
+    "passport-facebook": "^3.0.0",
+    "passport-google-oauth": "^2.0.0",
+    "passport-local": "^1.0.0",
+    "passport-twitter": "^1.0.4",
     "through2": "^3.0.1"
   }
 }
