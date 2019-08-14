@@ -1,10 +1,13 @@
 import express from 'express';
-import * as state from '../../../state.json';
+import { User } from '../../../models/user';
 
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.json(Object.values(state.users));
+  User.findAll().then(users => {
+    console.log(`all users ${JSON.stringify(users)}`);
+    return res.json(users);
+  });
 });
 
 export { router };

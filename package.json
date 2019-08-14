@@ -57,7 +57,8 @@
     "husky": "^2.7.0",
     "lint-staged": "^8.2.1",
     "nodemon": "^1.19.1",
-    "prettier": "^1.18.2"
+    "prettier": "^1.18.2",
+    "sequelize-cli": "^5.5.0"
   },
   "dependencies": {
     "commander": "^2.20.0",
@@ -69,6 +70,9 @@
     "passport-google-oauth": "^2.0.0",
     "passport-local": "^1.0.0",
     "passport-twitter": "^1.0.4",
-    "through2": "^3.0.1"
+    "through2": "^3.0.1",
+    "pg": "^7.12.1",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^5.14.0"
   }
 }
