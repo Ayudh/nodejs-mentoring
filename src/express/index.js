@@ -1,5 +1,8 @@
 import app from './app';
+import { sequelize } from './connection';
 
 const PORT = 3000;
 
-app.listen(PORT, () => console.log('Server listening in ' + PORT));
+sequelize.sync({ force: true }).then(() => {
+  app.listen(PORT, () => console.log('Server listening in ' + PORT));
+});

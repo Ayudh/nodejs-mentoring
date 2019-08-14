@@ -1,31 +1,32 @@
 import express from 'express';
-import * as state from '../../../state.json';
+import { Product } from '../../../models/product';
 
 const router = express.Router();
 
-router.use((req, res, next) => {
-  req.products = state.products;
-  next();
-});
-
 router.get('/', (req, res) => {
-  res.json(Object.values(req.products));
+  Product.findAll()
+    .then(products => res.json(products))
+    .catch(err => res.send(err));
 });
 
 router.post('/', (req, res) => {
-  state.products[req.body.id] = req.body;
-  res.json(req.body);
+  const { id, name, brand, model, price, reviews } = req.body;
+
+  Product.create({ id, name, brand, model, price, reviews })
+    .then(product => res.json(product))
+    .catch(err => res.send(err));
 });
 
 router.param('id', (req, res, next, id) => {
   const productID = +id;
-  const product = req.products[productID];
-  if (!product) {
-    res.json({ message: 'Product not Found' });
-  } else {
-    req.product = product;
-    next();
-  }
+  Product.findByPk(productID)
+    .then(product => {
+      req.product = product;
+      next();
+    })
+    .catch(err => {
+      res.json({ message: 'Product not Found', error: err });
+    });
 });
 
 router.get('/:id', (req, res) => {
